@@ -30,7 +30,7 @@ jobs:
       id: compile
       run: |
         cd lakka
-        PROJECT=S905 ARCH=arm ./scripts/build mame
+        PROJECT=S905 ARCH=arm ./scripts/build mame -j8
 
     - name: Generate release tag
       id: tag
@@ -38,7 +38,7 @@ jobs:
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         echo "::set-output name=status::success"
 
-    - name: Upload firmware to release
+    - name: Upload to release
       uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
