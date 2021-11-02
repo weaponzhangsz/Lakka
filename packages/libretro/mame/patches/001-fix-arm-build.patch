@@ -1,0 +1,11 @@
+diff -ur /home/eken/a/makefile /home/eken/b/makefile
+--- /home/eken/a/makefile	2021-11-02 09:03:38.807386305 +0000
++++ /home/eken/b/makefile	2021-11-02 09:03:13.147386853 +0000
+@@ -1368,6 +1368,7 @@
+ 
+ $(PROJECTDIR)/$(MAKETYPE)-linux/Makefile: makefile $(SCRIPTS) $(GENIE)
+ 	$(SILENT) $(GENIE) $(PARAMS) $(TARGET_PARAMS) --gcc=linux-gcc --gcc_version=$(GCC_VERSION) $(MAKETYPE)
++	sed -i 's/-m32//g' build/projects/retro/mamearcade/gmake-linux/*.make
+ 
+ .PHONY: linux_x64
+ linux_x64: generate $(PROJECTDIR)/$(MAKETYPE)-linux/Makefile
